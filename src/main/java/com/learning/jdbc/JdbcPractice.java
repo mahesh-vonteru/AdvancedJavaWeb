@@ -9,10 +9,7 @@ public class JdbcPractice {
         String query = "SELECT * FROM jdbc.employe WHERE name = ?";
         query = query + " OR 1==1";
         String userdata = "";
-        Connection conn = DriverManager.getConnection(
-                "jdbc:postgresql://localhost:5432/jdbcpractice",
-                "postgres",
-                "postgres");
+        Connection conn = ConnectionFactory.produceConnection();
         System.out.println(conn);
         Statement st = conn.createStatement();
         ResultSet rs = st.executeQuery(query);

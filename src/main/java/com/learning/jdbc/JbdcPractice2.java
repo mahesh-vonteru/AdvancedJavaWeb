@@ -27,6 +27,7 @@ public class JbdcPractice2 {
 
     }
 }
+@SuppressWarnings("ALL")
 class Student
 {
     private String name;
@@ -36,10 +37,7 @@ class Student
     Scanner input = new Scanner(System.in);
     public void insertDetails() throws SQLException
     {
-        Connection con = DriverManager.getConnection(
-                "jdbc:postgresql://localhost:5432/jdbcpractice",
-                "postgres",
-                "postgres");
+        Connection con = ConnectionFactory.produceConnection();
         PreparedStatement pst = null;
 
         System.out.println("Enter Student name");
@@ -49,7 +47,8 @@ class Student
         System.out.println("Enter Student marks");
         marks = input.nextInt();
         System.out.println("Enter Student College  name");
-        college = input.nextLine();
+        college = input.next();
+        System.out.println("Thank you for the details.  Saving..");
         try{
 
             String query =  "INSERT INTO jdbc.student VALUES (?, ?, ?, ?);";
@@ -74,17 +73,13 @@ class Student
 
     }
     public void changePassword() throws SQLException {
-        Connection con = DriverManager.getConnection(
-                "jdbc:postgresql://localhost:5432/jdbcpractice",
-                "postgres",
-                "postgres");
+        Connection con = ConnectionFactory.produceConnection();
         PreparedStatement pst = null;
         System.out.println("Enter Student name");
         name = input.nextLine();
         System.out.println("Enter password");
         password = input.nextLine();
         try {
-
             String query = "UPDATE jdbc.student UPDATE SET passward=? WHERE name=?";
             pst = con.prepareStatement(query);
             pst.setString(1, password);
