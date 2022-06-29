@@ -1,17 +1,16 @@
 package com.learning.jdbc;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.Scanner;
 
-public class JbdcPractice2 {
+public class JbdcPractice2
+{
     public static void main(String[] args) throws SQLException {
         int choice=0;
         Student st = new Student();
         do {
-            System.out.println("Enter you are choice following options");
-            System.out.println("1.insert student details\n2.Change Student password \n 5.Exit ");
+            System.out.println("ENTER YOUR CHOICE FOLLOWING ");
+            System.out.println("1.INSERT STUDENT DETAILS \n 2.CHANGE STUDENT PASSWORD \n 3.DELETE RECORD FROM LIST \n" +
+                    "4.SEARCH FOR A RECORD \n 5.Exit ");
             Scanner choicein = new Scanner(System.in);
             choice = choicein.nextInt();
             switch (choice) {
@@ -21,9 +20,15 @@ public class JbdcPractice2 {
                 case 2:
                     st.changePassword();
                     break;
+                case 3:
+                    st.deleteRecord();
+                    break;
+                case 4:
+                    st.searchRecord();
+                    break;
             }
         }while(choice!=5);
-        System.out.println("Thanks for using our Software");
+        System.out.println("THANKS FOR USING OUR SOFT WARE");
 
     }
 }
@@ -40,15 +45,14 @@ class Student
         Connection con = ConnectionFactory.produceConnection();
         PreparedStatement pst = null;
 
-        System.out.println("Enter Student name");
+        System.out.println("ENTER STUDENT NAME");
         name = input.nextLine();
-        System.out.println("Enter password");
+        System.out.println("ENTER PASS WORD");
         password = input.nextLine();
-        System.out.println("Enter Student marks");
+        System.out.println("ENTER COLLEGE NAME");
+        college = input.nextLine();
+        System.out.println("ENTER MARKS ACHIEVE ");
         marks = input.nextInt();
-        System.out.println("Enter Student College  name");
-        college = input.next();
-        System.out.println("Thank you for the details.  Saving..");
         try{
 
             String query =  "INSERT INTO jdbc.student VALUES (?, ?, ?, ?);";
@@ -72,7 +76,8 @@ class Student
         }
 
     }
-    public void changePassword() throws SQLException {
+    public void changePassword() throws SQLException
+    {
         Connection con = ConnectionFactory.produceConnection();
         PreparedStatement pst = null;
         System.out.println("Enter Student name");
@@ -80,6 +85,7 @@ class Student
         System.out.println("Enter password");
         password = input.nextLine();
         try {
+
             String query = "UPDATE jdbc.student UPDATE SET passward=? WHERE name=?";
             pst = con.prepareStatement(query);
             pst.setString(1, password);
@@ -100,4 +106,62 @@ class Student
                 pst.close();
         }
     }
+    public void deleteRecord() throws SQLException
+    {
+        Connection con = ConnectionFactory.produceConnection();
+        PreparedStatement pst = null;
+        System.out.println("ENTER WHICH RECORD YOU WANT TO DELETE (NAME OF THE STUDENT)");
+        String name = input.nextLine();
+        try {
+
+            String query = "DELETE FROM  jdbc.student WHERE name=?;";
+            pst = con.prepareStatement(query);
+            pst.setString(1, name);
+            int i= pst.executeUpdate();
+            if(i>0){
+                System.out.println("RECORD DELETE SUCCESS FULLY");
+            }else {
+                System.out.println("NO SUCH RECORD IN DATA BASE");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }finally {
+            if(con != null)
+                con.close();
+
+            if(pst != null)
+                pst.close();
+        }
+    }
+    public void searchRecord() throws SQLException
+    {
+        Connection con = ConnectionFactory.produceConnection();
+        PreparedStatement pst = null;
+        System.out.println("ENTER WHICH RECORD YOU WANT TO DELETE (NAME OF THE STUDENT)");
+        String name = input.nextLine();
+        try {
+
+            String query = "SELECT name, passward, marks, college FROM jdbc.student where name=?;";
+            pst = con.prepareStatement(query);
+            pst.setString(1, name);
+           ResultSet rs = pst.executeQuery();
+           String userdata="";
+           if(rs.next()==false){
+                System.out.println("NO SUCH RECORD IN DATA BASE");
+            }else {
+                userdata = " "+rs.getString(1)+"  "+rs.getString(2)+"  "+
+                                    rs.getInt(3)+"  "+rs.getString(4);
+                System.out.println(userdata);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }finally {
+            if(con != null)
+                con.close();
+
+            if(pst != null)
+                pst.close();
+        }
+    }
+
     }
