@@ -49,4 +49,14 @@ public class Student {
     public void setCollege(String college) {
         this.college = college;
     }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "name='" + name + '\'' +
+                ", password='" + password + '\'' +
+                ", marks=" + marks +
+                ", college='" + college + '\'' +
+                '}';
+    }
 }

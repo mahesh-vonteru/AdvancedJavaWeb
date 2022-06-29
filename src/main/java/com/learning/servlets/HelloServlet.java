@@ -23,47 +23,27 @@ public class HelloServlet extends HttpServlet {
         DBService service = new DBService();
         response.setContentType("text/html");
         System.out.println("Came to servlet do get method");
-        // Hello
-        PrintWriter out = response.getWriter();
+       PrintWriter out = response.getWriter();
         out.println("<html><body>");
-        out.println("<h1>" + message + "</h1>");
-        out.println("<h1>PRINTING FROM SERVLET - GET METHOD </h1>");
-        out.println("<table><tr>");
+        out.println("<table border=1 width=15% height=15%>");
+        out.println("<h4>PRINTING STUDENT DETAILS - GET METHOD </h4>");
+        out.println("<tr><th>ST NAME</th><th>ST PASS</th><th>ST MARKS</th><th>ST COLL</th></tr>");
         try {
             List<Student> students = service.getStudentsDetails();
-            for (Student student: students) {
-                out.println("<h1>PRINTING FROM SERVLET - GET METHOD </h1>");
-            }
+            for (Student student: students)
+            {
+                out.println("<tr><td>" + student.getName() + "</td><td>" +student.getPassword()+ "</td><td>"
+                       + student.getMarks()+ "</td><td>"+student.getCollege() +"</td></tr>");
+
+               }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
 
-
-        out.println("</body></html>");
-
-
-
-    }
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        response.setContentType("text/html");
-        PrintWriter out = response.getWriter();
-        out.println("<html><body>");
-        out.println("<h1>PRINTING FROM SERVLET - POST METHOD </h1>");
-        out.println("</body></html>");
-    }
-    public void service(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        response.setContentType("text/html");
-        System.out.println("Came to servlet do get method");
-        // Hello
-        PrintWriter out = response.getWriter();
-        out.println("<html><body>");
-        out.println("<h1>" + message + "</h1>");
-        out.println("<h1>PRINTING FROM SERVLET - GET METHOD </h1>");
+        out.println("</table>");
         out.println("</body></html>");
 
     }
 
-    @Override
-    public void destroy() {
-    }
+
 }
