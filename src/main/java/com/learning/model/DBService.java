@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DBService {
+        String name,password,college;
+        int marks;
 
         public List<Student> getStudentsDetails () throws SQLException {
             Connection conn = ConnectionFactory.produceConnection();
@@ -26,7 +28,39 @@ public class DBService {
                 String stcollege = rs.getString(4);
                 students.add(new Student(stname, stpassword, stmarks, stcollege));
             }
+            conn.close();
+            pst.close();
             return students;
+
+        }
+        public void  insertDetails(String name,String password,int marks,String college) throws SQLException
+        {
+            this.name = name;
+            this.password = password;
+            this.marks = marks;
+            this.college = college;
+            Connection conn = null;
+            try {
+                conn = ConnectionFactory.produceConnection();
+            } catch (SQLException e)
+            {
+                throw new RuntimeException(e);
+            }
+            try {
+                String query = "INSERT INTO jdbc.student(name, passward, marks, college) VALUES (?, ?, ?, ?);";
+                PreparedStatement pst = conn.prepareStatement(query);
+                pst = conn.prepareStatement(query);
+                pst.setString(1, name);
+                pst.setString(2, password);
+                pst.setInt(3, marks);
+                pst.setString(4, college);
+                pst.executeUpdate();
+                conn.close();
+                pst.close();
+
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
 
         }
 
