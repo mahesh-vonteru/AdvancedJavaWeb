@@ -10,5 +10,6 @@ public class ConnectionFactory2 {
                 "jdbc:postgresql://localhost:5432/jdbcpractice",
                 "postgres",
                 "postgres");
+
     }
 }

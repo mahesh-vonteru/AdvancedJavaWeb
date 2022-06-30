@@ -9,9 +9,17 @@
 </h1>
 <h2>Welcome to java learning </h2>
 <br/>
-<form action="hello-servlet" method="get">
-    <input type="submit" value="student details">
+
+<form action="hello-servlet" method="post">
+    Name    :<input type="text" name="Studentname"/><br/><br/>
+    Password:<input type="password" name="Password"/><br/><br/>
+    Marks   :<input type="text" name="Studentmarks"/><br/><br/>
+    College :<input type="text" name="Studentcollege"/><br/><br/>
+    <br/><br/>
+    <input type="submit" value="SUBMIT DETAILS">
 </form>
+<form action="hello-servlet" method="get">
+    <input type="submit" value="GET ALL DETAILS">
 </form>
 </body>
 </html>
