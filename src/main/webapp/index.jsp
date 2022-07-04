@@ -19,6 +19,12 @@
         max-width: 100%;
         margin:auto;
     }
+    button:hover
+    {
+        background-color: #4CAF50;
+        color: white;
+    }
+
 </style>
 </head>
 <body style="background-color: silver">
@@ -38,7 +44,10 @@
     College :<input type="text" name="Studentcollege"
                     style ="border-style: dotted;margin-bottom:10px;margin-left: 10px; width: 30%"/><br/><br/>
 
-   <input type="submit" value="SUBMIT DETAILS" style="margin-left: 100px" >
+   <input type="button" value="SUBMIT DETAILS"
+          style="margin-left: 100px;
+          border-color: #4CAF50;
+          color: red; padding: 16px 32px; text-align: center; transition-duration: 0.4s;" >
                                                                                                                                                                                                                                                                                                                     </form>
 <br/><br/>
 <form action="hello-servlet" method="get"

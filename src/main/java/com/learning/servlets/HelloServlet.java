@@ -10,6 +10,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 
@@ -23,37 +25,19 @@ public class HelloServlet extends HttpServlet {
     }
 
     @Override
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         DBService service = new DBService();
-        response.setContentType("text/html");
-        System.out.println("Came to servlet do get method");
-        PrintWriter out = response.getWriter();
-        out.println("<html><body>");
-        out.println("<table border=1 width=25% height=15%>");
-        out.println("<h3>PRINTING STUDENT DETAILS - GET METHOD </h3>");
-        out.println("<tr>" +
-                    "<th>ST NAME</th>" +
-                    "<th>ST PASS</th>" +
-                    "<th>ST MARKS</th>" +
-                    "<th>ST COLL</th>" +
-                    "</tr>");
+        List<Student> students = null;
         try {
-            List<Student> students = service.getStudentsDetails();
-            for (Student student : students) {
-                out.println("<tr>" +
-                        "<td>" + student.getName() + "</td>" +
-                        "<td>" + student.getPassword() + "</td>" +
-                        "<td>"  + student.getMarks() + "</td>" +
-                        "<td>" + student.getCollege() + "</td>" +
-                        "</tr>");
-            }
+            students = service.getStudentsDetails();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
-        out.println("</table>");
-        out.println("</body></html>");
-
+        response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
+        request.setAttribute("student",students);
+        RequestDispatcher rd = request.getRequestDispatcher("display.jsp");
+        rd.forward(request,response);
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException
