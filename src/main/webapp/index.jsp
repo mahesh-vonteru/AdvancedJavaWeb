@@ -33,7 +33,8 @@
 <br/>
 <marquee style="color: whitesmoke" > MSR Degree college Student Details</marquee>
 <form action="hello-servlet" method="post"
-      style="border: red; border-style: outset; border-width: 5px; background-color: aqua; border-radius: 40px 40px 40px 40px " >
+      style="border: red; border-style: outset; border-width: 5px;
+      background-color: aqua; border-radius: 40px 40px 40px 40px " >
     <br/>
     Name    :<input type="text" name="Studentname"
                     style ="border-style: dotted; margin-bottom:10px;margin-left: 20px; width: 30%"   /><br/><br/>
