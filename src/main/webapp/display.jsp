@@ -22,10 +22,14 @@
            color: red ">STUDENT DETAILS FROM DATABASE</h2>
 <table style="border: 1px solid black; width: 60%; margin-left: 250px; ">
     <tr style="border: 1px solid black;">
-        <th style="background-color: darkgrey;color: red">Student Name</th>
-        <th style="background-color: darkgrey; color: red">Student Password</th>
-        <th style="background-color: darkgrey; color: red">Student Marks</th>
-        <th style="background-color: darkgrey; color: red">Student college</th>
+        <th style="background-color: darkgrey;
+            color: red">Student Name</th>
+        <th style="background-color: darkgrey;
+            color: red">Student Password</th>
+        <th style="background-color: darkgrey;
+            color: red">Student Marks</th>
+        <th style="background-color: darkgrey;
+            color: red">Student college</th>
     </tr>
     <c:forEach var="s" items="${student}">
         <tr style="border: 1px solid black; width: revert">
