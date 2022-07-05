@@ -12,7 +12,7 @@
 <head>
     <title>Title</title>
 </head>
-<body style="background-color: teal">
+<body style="background-image: url('./images/175640.jpg')">
 <h2 style="border:orange;
            border-width:5px;
            border-style:solid;
@@ -22,14 +22,11 @@
            color: red ">STUDENT DETAILS FROM DATABASE</h2>
 <table style="border: 1px solid black; width: 60%; margin-left: 250px; ">
     <tr style="border: 1px solid black;">
-        <th style="background-color: darkgrey;
-            color: red">Student Name</th>
-        <th style="background-color: darkgrey;
-            color: red">Student Password</th>
-        <th style="background-color: darkgrey;
-            color: red">Student Marks</th>
-        <th style="background-color: darkgrey;
-            color: red">Student college</th>
+        <th style="background-color: darkgrey; color: red">Student Name</th>
+        <th style="background-color: darkgrey; color: red">Student Password</th>
+        <th style="background-color: darkgrey; color: red">Student Marks</th>
+        <th style="background-color: darkgrey; color: red">Student college</th>
+        <th style="background-color: darkgrey; color: red">Actions</th>
     </tr>
     <c:forEach var="s" items="${student}">
         <tr style="border: 1px solid black; width: revert">
@@ -41,9 +38,18 @@
             <td style="border: 1px solid black; border-radius: 5px;  background-color: silver; text-align: center;">${s.password}</td>
             <td style="border: 1px solid black; border-radius: 5px;  background-color: silver; text-align: center;">${s.marks}</td>
             <td style="border: 1px solid black; border-radius: 5px; background-color: silver; text-align: center;">${s.college}</td>
+            <td style="border: 1px solid black; border-radius: 5px; background-color: silver; text-align: center;">
+                <input type="button" value="update" onclick="updateStudent(this)" student-name="${s.name}" student-password="${s.password}" >
+                <input type="button" value="delete">
+            </td>
         </tr>
 
     </c:forEach>
 </table>
+<script type="application/javascript">
+    function updateStudent(obj){
+        document.getElementById("asdasdfasdf").append()
+    }
+</script>
 </body>
 </html>
