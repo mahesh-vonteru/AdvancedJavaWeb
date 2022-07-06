@@ -63,5 +63,22 @@ public class DBService {
             }
 
         }
+        public void deleteDetails(String name) throws SQLException {
+            this.name = name;
+            Connection conn = null;
+            try {
+                conn = ConnectionFactory.produceConnection();
+            } catch (SQLException e)
+            {
+                throw new RuntimeException(e);
+            }
+            String query = "DELETE FROM jdbc.student WHERE (?);";
+            PreparedStatement pst = conn.prepareStatement(query);
+            pst.setString(1, name);
+            pst = conn.prepareStatement(query);
+            pst.executeUpdate();
+            conn.close();
+            pst.close();
+        }
 
    }

@@ -1,4 +1,5 @@
-<%--
+<%@ page import="com.learning.model.DBService" %>
+<%@ page import="java.sql.SQLException" %><%--
   Created by IntelliJ IDEA.
   User: Mahesh
   Date: 7/1/2022
@@ -46,9 +47,20 @@
 
     </c:forEach>
 </table>
+
 <script type="application/javascript">
     function updateStudent(obj){
-        document.getElementById("asdasdfasdf").append()
+
+        <%
+
+        DBService service = new DBService();
+    try {
+        service.deleteDetails("mahesh");
+    } catch (SQLException e) {
+        throw new RuntimeException(e);
+    }
+%>
+        document.getElementById("studene-name");
     }
 </script>
 </body>

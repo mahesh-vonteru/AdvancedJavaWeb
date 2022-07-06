@@ -23,9 +23,8 @@ public class HelloServlet extends HttpServlet {
         message = "Hello World!";
     }
 
-    @Override
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        DBService service = new DBService();
+   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+     /*  DBService service = new DBService();
         List<Student> students = null;
         try {
             students = service.getStudentsDetails();
@@ -36,12 +35,12 @@ public class HelloServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         request.setAttribute("student",students);
         RequestDispatcher rd = request.getRequestDispatcher("display.jsp");
-        rd.forward(request,response);
+        rd.forward(request,response);*/
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException
     {
-        DBService service = new DBService();
+      /* DBService service = new DBService();
         String name = request.getParameter("Studentname");
         String password = request.getParameter("Password");
         int marks = Integer.parseInt(request.getParameter("Studentmarks"));
@@ -53,7 +52,7 @@ public class HelloServlet extends HttpServlet {
         }
         PrintWriter out = response.getWriter();
         out.println("<html><body><b>SUCCESS FULLY SUBMITTED </b></body></html>");
-        response.sendRedirect("success.jsp");
+        response.sendRedirect("success.jsp");*/
 
     }
 }

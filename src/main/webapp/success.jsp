@@ -15,7 +15,7 @@
 <h2>Success.</h2>
 <br>
 <p>Your details have been successfully saved to Database</p>
-<a href="index.jsp"> Please click here to submit another form</a>
+<a href="login.jsp"> Please click here to submit another form</a>
 <h1 style="color: cadetblue">
     ${message}
 </h1>
