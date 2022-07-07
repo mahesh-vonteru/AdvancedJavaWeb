@@ -24,9 +24,9 @@ public class StudentController extends HttpServlet {
         }
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
-        request.setAttribute("student",students);
+        request.setAttribute("student", students);
         RequestDispatcher rd = request.getRequestDispatcher("display.jsp");
-        rd.forward(request,response);
+        rd.forward(request, response);
     }
 
     @Override
@@ -37,7 +37,7 @@ public class StudentController extends HttpServlet {
         int marks = Integer.parseInt(request.getParameter("Studentmarks"));
         String college = request.getParameter("Studentcollege");
         try {
-            service.insertDetails(name,password,marks,college);
+            service.insertDetails(name, password, marks, college);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -47,20 +47,4 @@ public class StudentController extends HttpServlet {
 
     }
 
-    @Override
-    protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
-
-    @Override
-    protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String name = request.getParameter("student-name");
-        DBService service = new DBService();
-        try {
-            service.deleteDetails(name);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        response.sendRedirect("success.jsp");
-    }
 }

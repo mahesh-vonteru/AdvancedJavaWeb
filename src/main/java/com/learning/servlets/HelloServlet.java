@@ -23,23 +23,21 @@ public class HelloServlet extends HttpServlet {
         message = "Hello World!";
     }
 
-   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-     /*  DBService service = new DBService();
-        List<Student> students = null;
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+     DBService service1 = new DBService();
+        String name = request.getParameter("studentName");
         try {
-            students = service.getStudentsDetails();
+            service1.deleteRecord(name);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        response.setContentType("text/html");
         PrintWriter out = response.getWriter();
-        request.setAttribute("student",students);
-        RequestDispatcher rd = request.getRequestDispatcher("display.jsp");
-        rd.forward(request,response);*/
+        out.println("<html><body><b>SUCCESS DELETED DETAILS </b></body></html>");
+        response.sendRedirect("success.jsp");
+
     }
 
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException
-    {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
       /* DBService service = new DBService();
         String name = request.getParameter("Studentname");
         String password = request.getParameter("Password");

@@ -47,21 +47,5 @@
 
     </c:forEach>
 </table>
-
-<script type="application/javascript">
-    function updateStudent(obj){
-
-        <%
-
-        DBService service = new DBService();
-    try {
-        service.deleteDetails("mahesh");
-    } catch (SQLException e) {
-        throw new RuntimeException(e);
-    }
-%>
-        document.getElementById("studene-name");
-    }
-</script>
 </body>
 </html>

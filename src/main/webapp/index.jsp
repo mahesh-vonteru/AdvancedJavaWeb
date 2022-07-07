@@ -29,7 +29,7 @@
 </head>
 <body style="background-color: silver">
 <h2 style="border:orange;border-width:5px;border-style:solid;border-radius: 50px;text-align: center; background-color: teal;color: white ">
-    <%= "Enter Student Details and Get Student Details " %></h2>
+    <%= "Student Information System " %></h2>
 <br/>
 <marquee style="color: whitesmoke" > MSR Degree college Student Details</marquee>
 <form action="hello-servlet" method="post"

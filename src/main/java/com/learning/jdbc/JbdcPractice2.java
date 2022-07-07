@@ -108,7 +108,7 @@ class Student
     }
     public void deleteRecord() throws SQLException
     {
-        Connection con = ConnectionFactory.produceConnection();
+     /*  Connection con = ConnectionFactory.produceConnection();
         PreparedStatement pst = null;
         System.out.println("ENTER WHICH RECORD YOU WANT TO DELETE (NAME OF THE STUDENT)");
         String name = input.nextLine();
@@ -131,7 +131,7 @@ class Student
 
             if(pst != null)
                 pst.close();
-        }
+        }*/
     }
     public void searchRecord() throws SQLException
     {

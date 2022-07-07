@@ -11,11 +11,12 @@
 <head>
     <title>Success</title>
 </head>
-<body>
+<body style="background-image: url('./images/forming.jpg'); argin: 0; padding: 0; font-family:sans-serif;
+       background-attachment: fixed; background-size: 100%;">
 <h2>Success.</h2>
 <br>
-<p>Your details have been successfully saved to Database</p>
-<a href="login.jsp"> Please click here to submit another form</a>
+<p>SUCCESS FULLY DELETED STUDENT DETAILS  </p>
+<a href="login.jsp"> GO TO HOME </a>
 <h1 style="color: cadetblue">
     ${message}
 </h1>
